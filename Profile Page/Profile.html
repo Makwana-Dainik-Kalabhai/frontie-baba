@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Parkinsans:wght@300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+    * {
+        font-family: "Lato", serif;
+    }
+
+    body {
+        display: grid;
+        place-items: center;
+        margin: 0;
+        padding: 0;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-BJX-RXtOwv9zlv_xfTDh0nvj4O-UkiTogg&s");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    main {
+        position: relative;
+        width: 45%;
+        padding: 2rem;
+        margin-top: 6rem;
+        box-shadow: 0px 0px 5px 1px #f2f2f2;
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .circle:nth-child(1) {
+        top: 3rem;
+        left: -2rem;
+        background-color: #983A66;
+        box-shadow: 0px 0px 50px 50px #983A66;
+    }
+
+    .circle:nth-child(2) {
+        top: 6rem;
+        right: -2rem;
+        background-color: #766BD3;
+        box-shadow: 0px 0px 50px 50px #766BD3;
+    }
+
+    .circle:nth-child(3) {
+        bottom: -2rem;
+        left: 15rem;
+        background-color: #6BBD99;
+        box-shadow: 0px 0px 50px 50px #6BBD99;
+    }
+
+    .card {
+        padding: 1rem;
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 1px #f2f2f2;
+    }
+
+    .card .img {
+        width: 42%;
+        padding: 1rem 1.5rem;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 1px #d9d9d9;
+    }
+
+    .card img {
+        width: 100%;
+    }
+
+    .card span {
+        display: block;
+        font-weight: 600;
+    }
+
+    .card .img span {
+        text-align: center;
+    }
+    .card .img span:first-of-type {
+        font-size: 16px;
+    }
+    .card .img span:last-of-type {
+        color: #0A7075;
+        font-size: 15px;
+    }
+
+    .card .img .btns {
+        width: 100%;
+        margin-top: 0.8rem;
+    }
+
+    .card button {
+        min-width: 45%;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 0.3rem 0.7rem;
+        border: none;
+        border-radius: 3px;
+        background-color: #983A66;
+    }
+
+    .card .img button:last-of-type {
+        color: #983A66;
+        border: 1px solid #983A66;
+        background-color: transparent;
+    }
+
+
+    .details {
+        position: relative;
+        padding: 1rem 1rem 0rem 1.5rem;
+    }
+    .details .location {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 15px;
+        color: gray;
+    }
+
+    .details .name {
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.5;
+    }
+
+    .details .role {
+        font-size: 15.5px;
+        font-weight: 700;
+        color: #0A7075;
+    }
+    .details .contact-info {
+        margin-top: 3rem;
+    }
+    .details h4 {
+        color: gray;
+        line-height: 0.1;
+    }
+    table {
+        width: 100%;
+        text-align: left;
+    }
+    table tr {
+        line-height: 1.7;
+        vertical-align: top;
+    }
+    table th {
+        width: 20%;
+        color: #983A66;
+    }
+    table td {
+        font-weight: 500;
+    }
+    .details .edit-btn {
+        min-width: fit-content;
+        position: absolute;
+        bottom: 0.5rem;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+    <main>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+
+        <!-- <h1>User Profile</h1> -->
+        <div class="card">
+            <div class="img">
+                <img src="profile.png" alt="">
+                <span>Frontie BABA</span>
+                <span>Front End Developer</span>
+                <div class="btns">
+                    <button>Follow</button>
+                    <button><i class="fa-solid fa-message"></i> Message</button>
+                </div>
+            </div>
+            <div class="details">
+                <b class="location"><i class="fa-solid fa-location-dot"></i>Ahmedabad</b>
+                <span class="name">Frontie BABA</span>
+                <span class="role">Front End Developer</span>
+
+                <div class="contact-info">
+                    <h4>Contact Information</h4>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th>Email ID:</th>
+                            <td>example123@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>+91 98989 89898</td>
+                        </tr>
+                        <tr>
+                            <th>Address:</th>
+                            <td>X/300 Apartment Name near Suite, Ahmedabad, Gujarat - 000 000</td>
+                        </tr>
+                    </table>
+                </div>
+                <button class="edit-btn"><i class="fa-solid fa-edit"></i>&ensp;Edit</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="mobileNav.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  $(document).ready(function () {
+    $("button").click(function () {
+      $("button").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+</script>
+
+<body>
+  <main>
+    <nav class="nav-orders" aria-label="Navigation Menu">
+      <div class="menu">
+        <button value="HOME PAGE">
+          <i class="fa-solid fa-house"></i>
+          <span class="text-wrapper">HOME</span>
+        </button>
+      </div>
+
+      <div class="menu">
+        <button value="CATEGORY LIST">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <span class="text-wrapper">CATEGORY</span>
+        </button>
+      </div>
+
+      <div class="menu">
+        <button class="active" value="ORDERS HISTORY">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="text-wrapper">ORDERS</span>
+        </button>
+      </div>
+
+      <div class="menu">
+        <button value="USER'S ACCOUNT">
+          <i class="fa-solid fa-user"></i>
+          <span class="text-wrapper">ACCOUNT</span>
+        </button>
+      </div>
+
+      <div class="menu">
+        <button>
+          <i class="fa-solid fa-bars"></i>
+          <span class="text-wrapper">MORE</span>
+        </button>
+      </div>
+    </nav>
+  </main>
+</body>
+
+</html>

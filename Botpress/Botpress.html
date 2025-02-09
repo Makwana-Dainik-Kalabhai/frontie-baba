@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        filter: brightness(120%), contrast(120%);
+    }
+
+    header {
+        box-shadow: 0px 0px 3px 1px #f2f2f2;
+    }
+
+    header:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2%;
+        background-color: gray;
+    }
+
+    header:first-child img {
+        width: 4%;
+        padding: 1%;
+    }
+
+    header:first-child div {
+        width: 15%;
+    }
+
+    header:first-child a {
+        font-size: 20px;
+        font-weight: 600;
+        color: #60F42A;
+        margin: 0 7%;
+        text-decoration: none;
+    }
+
+    header a {
+        color: black;
+        font-size: 18px;
+        margin: 0 7%;
+        text-decoration: none;
+    }
+
+    header:last-of-type {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f2f2f2;
+        padding: 1.2% 2%;
+    }
+
+    section {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+    }
+
+    header:last-of-type div {
+        width: 30%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .fa-bars {
+        font-size: 22px;
+    }
+
+    form {
+        position: relative;
+        width: 40%;
+        display: flex;
+        align-items: center;
+    }
+
+    form input {
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid;
+        font-size: 17px;
+        padding: 1%;
+        background-color: transparent;
+    }
+
+    form i {
+        position: absolute;
+        right: 0;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+    <header>
+        <img src="logo.png" alt="">
+        <div>
+            <a href="">signUP</a>
+            <a href="">Login</a>
+        </div>
+    </header>
+    <header>
+        <i class="fa-solid fa-bars"></i>
+        <section>
+            <div>
+                <a href="">HOME</a>
+                <a href="">ABOUT US</a>
+                <a href="">CONTACT US</a>
+            </div>
+            <form action="">
+                <input type="text" placeholder="Search Here..." />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form>
+        </section>
+    </header>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/04/06/20250204060135-LONDOWMV.js"></script>
+</body>
+
+</html>
