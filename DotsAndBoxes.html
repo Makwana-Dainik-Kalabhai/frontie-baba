@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .hide-bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        filter: brightness(25%);
+        background-color: white;
+        z-index: 1;
+    }
+
+    .score-board {
+        width: 35%;
+        padding: 1rem;
+    }
+
+    .score-board>div {
+        position: relative;
+        width: 45%;
+        padding: 1rem;
+        margin: 0 1rem;
+        height: fit-content;
+        box-shadow: 0px 0px 10px 2px #d9d9d9;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .score-board img {
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+
+    .name {
+        color: brown;
+        line-height: 0;
+    }
+
+    .color {
+        position: absolute;
+        top: 5%;
+        right: 7%;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    .person-1 .color {
+        background-color: red;
+    }
+
+    .person-2 .color {
+        background-color: blue;
+    }
+
+    main {
+        width: 50%;
+    }
+
+    section {
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
+        width: 100%;
+        height: 500px;
+        margin: auto;
+        margin-top: 3rem;
+        padding: 1rem 0 0 2rem;
+        box-shadow: 0px 0px 10px 2px #f2f2f2;
+        border-radius: 5px;
+    }
+
+    body>div {
+        display: flex;
+    }
+
+    .dot-line {
+        position: relative;
+    }
+
+    .dot {
+        width: 5px;
+        height: 5px;
+        background-color: gray;
+        border-radius: 50%;
+    }
+
+    .hor-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 5.5px;
+        width: 92%;
+        height: 4px;
+        margin: 0 auto;
+        background-color: #d9d9d9;
+        border-radius: 25px;
+        background-color: transparent;
+    }
+
+    .ver-line {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: absolute;
+        top: 5.5px;
+        left: 0;
+        width: 4px;
+        height: 92%;
+        margin: auto 0;
+        background-color: #d9d9d9;
+        border-radius: 25px;
+        background-color: transparent;
+    }
+
+    .bg-red:hover {
+        background-color: red;
+    }
+
+    .bg-blue:hover {
+        background-color: blue;
+    }
+
+    .box {
+        font-size: 30px;
+        font-weight: 900;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 92.5%;
+        height: 91.5%;
+        margin: auto;
+        display: grid;
+        place-items: center;
+    }
+
+    button {
+        display: block;
+        margin: auto;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        font-size: 17px;
+        font-weight: 600;
+        color: white;
+        background-color: brown;
+        border: none;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+
+
+    .winning {
+        display: none;
+        position: absolute;
+        top: 5%;
+        width: 45%;
+        padding: 1.5rem;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0px 0px 10px 2px #d9d9d9;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .winning img {
+        display: block;
+        width: 40%;
+        margin: auto;
+        filter: contrast(120%);
+    }
+
+    .winning h1 {
+        color: green;
+    }
+</style>
+
+<body>
+    <div class="hide-bg"></div>
+    <div class="score-board">
+        <div class="person-1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr3jhpAFYpzxx39DRuXIYxNPXc0zI5F6IiMQ&s"
+                alt="">
+            <h2 class="name"></h2>
+            <div class="color"></div>
+            <h3 class="score">Score: </h3>
+        </div>
+        <div class="person-2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr3jhpAFYpzxx39DRuXIYxNPXc0zI5F6IiMQ&s"
+                alt="">
+            <h2 class="name"></h2>
+            <div class="color"></div>
+            <h3 class="score">Score: </h3>
+        </div>
+    </div>
+    <main>
+        <section></section>
+        <button onclick="endGame()">End Game</button>
+    </main>
+
+    <div class="winning">
+        <img src="https://i.pinimg.com/736x/4a/08/30/4a083000a80262e2ccd897a6f7bfbd36.jpg">
+        <h1></h1>
+        <h2></h2>
+        <button onclick="thankYou()">Thank You</button>
+    </div>
+
+
+    <script>
+        let person1 = prompt("Enter the Name of Person1: ");
+        let person2 = prompt("Enter the Name of Person2: ");
+        document.querySelector(".person-1 .name").innerHTML = person1;
+        document.querySelector(".person-2 .name").innerHTML = person2;
+
+        var dot;
+        var line;
+        var box;
+        var dot_line;
+
+        let hor_arr = [];
+        let ver_arr = [];
+
+        for (let i = 1; i <= 11; i++) {
+            for (let j = 1; j <= 11; j++) {
+
+                dot_line = document.createElement("div");
+                dot_line.classList.add("dot-line");
+
+                dot = document.createElement("div");
+                dot.classList.add("dot");
+                dot_line.appendChild(dot);
+
+                if (j < 11) {
+                    line = document.createElement("div");
+                    line.classList.add("hor-line");
+                    line.classList.add("bg-red");
+                    dot_line.appendChild(line);
+                }
+                if (i < 11) {
+                    line = document.createElement("div");
+                    line.classList.add("ver-line");
+                    line.classList.add("bg-red");
+                    dot_line.appendChild(line);
+                }
+
+                if (i < 11 && j < 11) {
+                    box = document.createElement("div");
+                    box.classList.add("box");
+                    dot_line.appendChild(box);
+                }
+                document.querySelector("section").appendChild(dot_line);
+            }
+        }
+
+        let hor_lines = document.querySelectorAll(".hor-line");
+        let ver_lines = document.querySelectorAll(".ver-line");
+        let win = document.querySelectorAll(".box");
+
+        var top_left, top_right, bottom_left, bottom_right;
+
+        let user1 = true;
+        let color = "red", backColor = "#ffb3b3";
+        let p1Score = 0, p2Score = 0;
+
+
+        // Horizontal Lines
+        hor_lines.forEach((e, i) => {
+            e.addEventListener("click", () => {
+                e.style.backgroundColor = color;
+                (!hor_arr.includes(i)) ? hor_arr.push(i) : "";
+
+                top_left = -1;
+                top_right = -1;
+                bottom_left = -1;
+                bottom_right = -1;
+
+                if (hor_arr.includes(i - 10)) {
+                    top_left = (i - (11 - parseInt(i / 10)));
+                    top_right = (i - (10 - parseInt(i / 10)));
+                }
+                if (hor_arr.includes(i + 10)) {
+                    bottom_left = (i + (parseInt(i / 10)));
+                    bottom_right = (i + (parseInt(i / 10) + 1));
+                }
+
+                if (ver_arr.includes(top_left) && ver_arr.includes(top_right) && hor_arr.includes(i - 10)) {
+                    win[i - 10].style.color = color;
+
+                    if (user1) {
+                        p1Score++;
+                        win[i - 10].style.backgroundColor = backColor;
+                        win[i - 10].innerHTML = person1.charAt(0);
+                        document.querySelector(".person-1 .score").innerHTML = `Score:  ${p1Score}`;
+                    }
+                    else {
+                        p2Score++;
+                        win[i - 10].style.backgroundColor = backColor;
+                        win[i - 10].innerHTML = person2.charAt(0);
+                        document.querySelector(".person-2 .score").innerHTML = `Score:  ${p2Score}`;
+                    }
+                }
+                if (ver_arr.includes(bottom_left) && ver_arr.includes(bottom_right) && hor_arr.includes(i + 10)) {
+                    win[i].style.color = color;
+                    if (user1) {
+                        p1Score++;
+                        win[i].style.backgroundColor = backColor;
+                        win[i].innerHTML = person1.charAt(0)
+                        document.querySelector(".person-1 .score").innerHTML = `Score:  ${p1Score}`;
+                    }
+                    else {
+                        p2Score++;
+                        win[i].style.backgroundColor = backColor;
+                        win[i].innerHTML = person2.charAt(0);
+                        document.querySelector(".person-2 .score").innerHTML = `Score:  ${p2Score}`;
+                    }
+                }
+
+                hor_lines.forEach((e) => {
+                    e.classList.toggle("bg-red");
+                    e.classList.toggle("bg-blue");
+                });
+                ver_lines.forEach((e) => {
+                    e.classList.toggle("bg-red");
+                    e.classList.toggle("bg-blue");
+                });
+                user1 = (user1) ? false : true;
+                color = (color == "red") ? "blue" : "red";
+                backColor = (backColor == "#ffb3b3") ? "#add8e6" : "#ffb3b3";
+                (hor_arr.length >= 99 && ver_arr.length >= 99) ? endGame() : "";
+            });
+        });
+
+
+
+        // Verticle Lines
+        ver_lines.forEach((e, i) => {
+            e.addEventListener("click", () => {
+                e.style.backgroundColor = color;
+                (!ver_arr.includes(i)) ? ver_arr.push(i) : "";
+
+                top_left = -1;
+                top_right = -1;
+                bottom_left = -1;
+                bottom_right = -1;
+
+                if (ver_arr.includes(i - 1) && i % 11 != 0) {
+                    top_right = (i - (parseInt(i / 11) + 1));
+                    bottom_right = top_right + 10;
+                }
+                if (ver_arr.includes(i + 1)) {
+                    top_left = (i - (parseInt(i / 11)));
+                    bottom_left = top_left + 10;
+                }
+
+                if (hor_arr.includes(top_right) && hor_arr.includes(bottom_right) && ver_arr.includes(i - 1)) {
+                    win[top_right].style.color = color;
+
+                    if (user1) {
+                        p1Score++;
+                        win[top_right].style.backgroundColor = backColor;
+                        win[top_right].innerHTML = person1.charAt(0);
+                        document.querySelector(".person-1 .score").innerHTML = `Score:  ${p1Score}`;
+                    }
+                    else {
+                        p2Score++;
+                        win[top_right].style.backgroundColor = backColor;
+                        win[top_right].innerHTML = person2.charAt(0);
+                        document.querySelector(".person-2 .score").innerHTML = `Score:  ${p2Score}`;
+                    }
+                }
+                if (hor_arr.includes(top_left) && hor_arr.includes(bottom_left) && ver_arr.includes(i + 1)) {
+                    win[i - parseInt(i / 11)].style.color = color;
+
+                    if (user1) {
+                        p1Score++;
+                        win[i - parseInt(i / 11)].style.backgroundColor = backColor;
+                        win[i - parseInt(i / 11)].innerHTML = person1.charAt(0);
+                        document.querySelector(".person-1 .score").innerHTML = `Score:  ${p1Score}`;
+                    }
+                    else {
+                        p2Score++;
+                        win[i - parseInt(i / 11)].style.backgroundColor = backColor;
+                        win[i - parseInt(i / 11)].innerHTML = person2.charAt(0);
+                        document.querySelector(".person-2 .score").innerHTML = `Score:  ${p2Score}`;
+                    }
+                }
+                hor_lines.forEach((e) => {
+                    e.classList.toggle("bg-red");
+                    e.classList.toggle("bg-blue");
+                });
+                ver_lines.forEach((e) => {
+                    e.classList.toggle("bg-red");
+                    e.classList.toggle("bg-blue");
+                });
+                user1 = (user1) ? false : true;
+                color = (color == "red") ? "blue" : "red";
+                backColor = (backColor == "#ffb3b3") ? "#add8e6" : "#ffb3b3";
+                (hor_arr.length >= 99 && ver_arr.length >= 99) ? endGame() : "";
+            });
+        });
+
+        function endGame() {
+            if (p1Score > 0 || p2Score > 0) {
+                document.querySelector(".hide-bg").style.display = "block";
+                document.querySelector(".winning").style.display = "block";
+
+                if (p1Score != p2Score) {
+                    document.querySelector(".winning img").style.display = "block";
+                    document.querySelector(".winning h1").innerHTML = `Congratulations! ${(p1Score > p2Score) ? person1 : person2}  `;
+                    document.querySelector(".winning h2").innerHTML = `You win the match by ${(p1Score > p2Score) ? p1Score - p2Score : p2Score - p1Score} points`;
+                }
+                else {
+                    document.querySelector(".winning img").style.display = "none";
+                    document.querySelector(".winning h1").innerHTML = "IT'S A TIE";
+                    document.querySelector(".winning h2").innerHTML = `${person1} And ${person2} both have same Score, So It's Tie, Play Again!`;
+                }
+            }
+            else {
+                alert("Please! Play Game First");
+            }
+        }
+
+        function thankYou() {
+            document.querySelector(".hide-bg").style.display = "none";
+            document.querySelector(".winning").style.display = "none";
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
